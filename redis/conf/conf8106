@@ -1,0 +1,7 @@
+daemonize yes
+dir data/8106
+port 8106
+cluster-enabled yes
+#cluster-config-file data/8106/conf
+bind 0.0.0.0
+requirepass aaa

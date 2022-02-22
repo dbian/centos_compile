@@ -21,3 +21,4 @@ RUN yum -y install fish
 RUN chsh -s /usr/bin/fish
 
 RUN echo "set -x PATH \$PATH /usr/local/go/bin" >> /etc/fish/config.fish
+RUN echo "set -x GOPROXY https://goproxy.io,direct" >> /etc/fish/config.fish

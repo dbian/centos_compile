@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  redis-cluster:
+    image: redis-dd:latest
+    ports:
+      - "8101:8101"
+      - "8102:8102"
+      - "8103:8103"
+      - "8104:8104"
+      - "8105:8105"
+      - "8106:8106"
+  d3ev:
+    image: d3ev
+    tty: true
+    volumes:
+      - "C:\\workspace:/ws"
+      - ./cache:/root
+      - ./config/ssh:/root/.ssh

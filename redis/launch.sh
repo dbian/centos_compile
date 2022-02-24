@@ -5,21 +5,18 @@ redis-server /opt/conf8104
 redis-server /opt/conf8105
 redis-server /opt/conf8106
 
+lip=`hostname --ip-address`
 
-
-ip="127.0.0.1:8101 127.0.0.1:8102 127.0.0.1:8103"
+ip="$lip:8101 $lip:8102 $lip:8103"
 redis-cli -a aaa -p 8101 --cluster create $ip --cluster-replicas 0 << EOF
 yes
 EOF
 
 
-ip="127.0.0.1:8104 127.0.0.1:8105 127.0.0.1:8106"
+ip="$lip:8104 $lip:8105 $lip:8106"
 
 redis-cli -a aaa -p 8104 --cluster create $ip --cluster-replicas 0 << EOF
 yes
 EOF
 
-while :
-do
-sleep 1000
-done
+bash -i

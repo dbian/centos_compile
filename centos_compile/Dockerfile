@@ -7,8 +7,8 @@ RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
     /etc/yum.repos.d/CentOS-*.repo
 
 RUN sed -e 's|^enabled=1|enabled=0|g' /etc/yum/pluginconf.d/fastestmirror.conf
-RUN yum -y install gcc automake autoconf libtool make gcc-c++ git binutils elfutils
-RUN yum -y groupinstall "Development Tools"
+RUN yum -y install gcc automake autoconf libtool make gcc-c++ git binutils elfutils net-tools iproute openssl-devel
+RUN yum -y groupinstall "Development Tools" 
 
 
 
@@ -22,3 +22,7 @@ RUN chsh -s /usr/bin/fish
 
 RUN echo "set -x PATH \$PATH /usr/local/go/bin" >> /etc/fish/config.fish
 RUN echo "set -x GOPROXY https://goproxy.io,direct" >> /etc/fish/config.fish
+
+# rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustupsc && sh rustupsc -y
+RUN echo "set -x PATH \$PATH /root/.cargo/bin" >> /etc/fish/config.fish

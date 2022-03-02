@@ -4,9 +4,11 @@ services:
   redisc:
     build: ./redis
     tty: true
+    restart: always
   d3ev:
     build: ./centos_compile
     tty: true
+    restart: always
     volumes:
       - d3evroot:/root
       - codes:/ws

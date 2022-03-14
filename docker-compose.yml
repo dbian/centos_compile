@@ -12,7 +12,23 @@ services:
     volumes:
       - d3evroot:/root
       - codes:/ws
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_USER: test
+      MYSQL_ROOT_PASSWORD: test123
+      MYSQL_DATABASE: cupd
+    volumes:
+      - db_persist:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5011:8080
 
 volumes:
   d3evroot:
   codes:
+  db_persist:
